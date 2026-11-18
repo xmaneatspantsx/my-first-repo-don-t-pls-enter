@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nautilus Cloud - Compatibility Test</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 12px;
+      background: #17191e;
+      color: #e5e7eb;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+    #window {
+      max-width: 720px;
+      margin: 8px auto;
+      border: 1px solid #454b55;
+      background: #242830;
+    }
+    #top {
+      padding: 12px;
+      background: #303641;
+      border-bottom: 1px solid #454b55;
+    }
+    #brand { font-size: 20px; font-weight: bold; color: #ffffff; }
+    #sub { color: #b8c0cc; margin-top: 4px; font-size: 12px; }
+    #content { padding: 14px; }
+    .panel {
+      padding: 10px;
+      margin: 10px 0;
+      background: #1d2128;
+      border: 1px solid #414854;
+    }
+    .ok { color: #8ed6a5; }
+    .warn { color: #ffd27d; }
+    .muted { color: #b8c0cc; }
+    a { color: #9fc5ff; }
+    input, button {
+      font-size: 14px;
+      padding: 7px;
+      margin: 4px 0;
+    }
+    button {
+      color: #ffffff;
+      background: #46566f;
+      border: 1px solid #7185a3;
+    }
+    #footer {
+      padding: 10px;
+      border-top: 1px solid #454b55;
+      color: #aeb6c2;
+      font-size: 11px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    td { padding: 6px; border-bottom: 1px solid #353b45; }
+    .label { width: 42%; color: #c4ccd7; }
+  </style>
+  <script type="text/javascript">
+    function showTime() {
+      var d = new Date();
+      var el = document.getElementById("js-result");
+      if (el) {
+        el.innerHTML = "JavaScript is working. Local browser time: " + d.toLocaleString();
+      }
+    }
+    function testForm() {
+      var box = document.getElementById("form-result");
+      var field = document.getElementById("test-field");
+      if (box && field) {
+        box.innerHTML = "Form test passed. You entered: " + field.value;
+      }
+      return false;
+    }
+  </script>
+</head>
+<body onload="showTime();">
+  <div id="window">
+    <div id="top">
+      <div id="brand">Nautilus Cloud</div>
+      <div id="sub">Nintendo DSi browser compatibility test</div>
+    </div>
+    <div id="content">
+      <h2>Welcome</h2>
+      <p>This is a harmless compatibility test page. It does not ask for or store passwords, and it does not upload files.</p>
+
+      <div class="panel">
+        <strong>Browser checks</strong>
+        <table>
+          <tr><td class="label">HTML page</td><td class="ok">Loaded successfully</td></tr>
+          <tr><td class="label">CSS styling</td><td class="ok">If this page has a dark background, CSS is working</td></tr>
+          <tr><td class="label">JavaScript</td><td id="js-result" class="warn">Checking...</td></tr>
+          <tr><td class="label">Screen width</td><td id="width-result">Checking...</td></tr>
+        </table>
+      </div>
+
+      <div class="panel">
+        <strong>Form test</strong>
+        <p class="muted">Type a short word and press Test. This checks basic form interaction.</p>
+        <form action="#" method="get" onsubmit="return testForm();">
+          <input type="text" id="test-field" name="test" value="hello" />
+          <input type="submit" value="Test form" />
+        </form>
+        <p id="form-result" class="ok">No test run yet.</p>
+      </div>
+
+      <div class="panel">
+        <strong>What to report</strong>
+        <ol>
+          <li>Does the page open?</li>
+          <li>Does the dark styling appear?</li>
+          <li>Does the JavaScript line show a time?</li>
+          <li>Does the form test work?</li>
+          <li>Can you open the page again after navigating away?</li>
+        </ol>
+      </div>
+
+      <p><a href="https://github.com/">GitHub</a> &nbsp; | &nbsp; <a href="https://pages.cloudflare.com/">Cloudflare Pages</a></p>
+    </div>
+    <div id="footer">
+      Nautilus Cloud prototype · Compatibility test only · No login or file storage is implemented
+    </div>
+  </div>
+  <script type="text/javascript">
+    var w = "not available";
+    if (window.innerWidth) { w = window.innerWidth + " pixels"; }
+    else if (document.documentElement && document.documentElement.clientWidth) {
+      w = document.documentElement.clientWidth + " pixels";
+    }
+    document.getElementById("width-result").innerHTML = w;
+  </script>
+</body>
+</html>
